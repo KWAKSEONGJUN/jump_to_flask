@@ -1,5 +1,5 @@
-<link rel="stylesheet" href={{ url_for('static', filename='bootstrap.min.css') }}>
-
+{% extends 'base.html' %}
+{% block content %}
 <div class="container my-3">
     <table class="table">
         <thead>
@@ -16,7 +16,7 @@
             <tr>
                 <td>{{ loop.index }}</td>
                 <td>
-                    <li><a href="{{url_for('question.detail', question_id=question.id)}}"> {{ question.subject }} </a></li>
+                    <a href="{{url_for('question.detail', question_id=question.id)}}"> {{ question.subject }} </a>
                 </td>
                 <td>{{ question.create_date }} </td>
             </tr>
@@ -31,4 +31,6 @@
             {% endif %}
         </tbody>
     </table>
+    <a href="{{url_for('question.create')}}" class="btn btn-primary">질문 등록하기</a>
 </div>
+{%endblock%}
